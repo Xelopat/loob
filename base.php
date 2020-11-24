@@ -21,6 +21,19 @@
 		}
 	}
 	
+	function get_point_count($name){
+		global $link;
+		$sql = "SELECT * FROM teachers WHERE teacher = '$name'";
+		$result = $link->query($sql);
+
+		if ($result->num_rows > 0) {
+		  // output data of each row
+		  while($row = $result->fetch_assoc()) {
+			return $row["point_count"];
+		  }
+		}
+	}
+	
 	function get_comments($name){
 		global $link;
 		$sql = "SELECT * FROM teachers WHERE teacher = '$name'";
@@ -103,6 +116,8 @@
 		}
 	}
 	function set_all_point($point, $name){
+		global $link;
+		
 		$result = "UPDATE teachers SET all_point='$point' WHERE teacher='$name'";
 		
 		if(mysqli_query($link, $result)){
@@ -140,8 +155,19 @@
 	
 	function add_comment($comment, $positive, $name){
 		global $link;
-		$plus = "1";
-		if ($positive) $plus = "5";
+		$plus = 1;
+		if ($positive) $plus = 5;
+		
+		$now_point = get_all_point($name);
+		
+		$now_point += $plus;
+		$now_count_point = get_point_count($name);
+		$now_count_point += 1;
+
+		set_all_point($now_point, $name);
+		set_point_count($now_count_point, $name);
+		set_point($now_point / $now_count_point, $name);
+		
 		$comments = get_comments_text($name);
 		$sum_comment = $comments . "^^^" . $plus . $comment ;
 		$result = "UPDATE teachers SET comments='$sum_comment' WHERE teacher='$name'";
@@ -153,7 +179,6 @@
 			echo "Error: " . $result . "<br>" . mysqli_error($link);
 		}
 	}
-	
 	?>
   </body>
 </html>
