@@ -3,6 +3,10 @@
 </head>
 <body>
 
+<?php
+$a=0;
+?>
+
 <form name=return action=index.php method=POST>
 	<input type="submit" name"Back" value="Вернуться" />
 </form>
