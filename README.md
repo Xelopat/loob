@@ -1,5 +1,6 @@
 	add_comment($comment, true, $name); #добавляет комментарий если положительный, то true к имени name
-	get_comments($name); #получает комментарий по имени
+	get_comments($name); #получает комментарий по имени массив
+	get_comments_text($name); #получает комментарий по имени только текст
 	
 	set_point($point, $name); #устанавливает учителю кол-во очков
 	set_all_point($points, $name); #устанавливает учителю общее количество очков
