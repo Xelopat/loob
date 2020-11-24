@@ -166,7 +166,9 @@
 
 		set_all_point($now_point, $name);
 		set_point_count($now_count_point, $name);
-		set_point($now_point / $now_count_point, $name);
+		if($now_count_point != 0){
+			set_point($now_point / $now_count_point, $name);
+		}
 		
 		$comments = get_comments_text($name);
 		$sum_comment = $comments . "^^^" . $plus . $comment ;
