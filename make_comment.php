@@ -4,7 +4,7 @@
 </head>
 <body>
 <?php
-$a='0';
+require_once "base.php";
 ?>
 <form name=return action=index.php method=POST>
 	<input type="submit" name"Back" value="Вернуться" />
@@ -16,7 +16,14 @@ $a='0';
 <input type="radio" name="voice" value="two" /> Родитель<br /> 
 
 Введите имя учителя <br/>
-<input type=text name=teacher> <br>
+<?php
+$names = get_teachers();
+echo "<select name='teacher'>";
+for($i = 0; $i < count($names); $i++){ 
+echo "<option name=$names[$i]>$names[$i]</option>"; 
+}
+echo "</select><br/>";
+?>
 
 Какой комментарий вы хотите оставить? <br/>
 <input type="radio" name="kind" value="5" /> Положительный <br /> 

@@ -2,7 +2,9 @@
 <head>
 </head>
 <body>
-
+<?php
+require_once "base.php";
+?>
 <form name=return action=index.php method=POST>
 	<input type="submit" name"Back" value="Вернуться" />
 </form>
@@ -10,7 +12,14 @@
 <form name=askStud action=final_questions.php method=POST>
 
 Введите имя учителя <br/>
-<input type=text name=teacher> <br/>
+<?php
+$names = get_teachers();
+echo "<select name=teacher>";
+for($i = 0; $i < count($names); $i++){ 
+echo "<option name=$names[$i]>$names[$i]</option>"; 
+}
+echo "</select><br/>";
+?>
 
 Считаете ли Вы, что педагог обеспечивает подготовку, достаточную для успешной работы, учебы? <br/>
 <input type="radio" name="1" value="5" /> 5) считаю, что педагог обеспечивает достаточную подготовку моему ребенку; <br /> 

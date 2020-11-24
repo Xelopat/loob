@@ -2,6 +2,9 @@
 <head>
 </head>
 <body>
+<form name=return action=index.php method=POST>
+	<input type="submit" name"Back" value="Вернуться" />
+</form>
 Спасибо за участие в опросе!
 <?php
 require_once "base.php";
