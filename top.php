@@ -12,10 +12,11 @@ require_once "base.php";
 <h1 align="center">Рейтинг учителей</h1>
 
 <?php
-$array = get_teachers();
-for ($i=0; $i < count($array); $i++){
-	$nh = str_replace(' ', '_', $array[$i]);
-	echo "<a href = comments.php?name=$nh>$array[$i]</a> <br/>Рейтинг:" .get_point($array[$i]) . "<br/><br/>";
+$all_info = get_all();
+foreach ($all_info as $key => $value){
+	$nh = str_replace(' ', '_', $key);
+	$sub = get_subject($key);
+	echo "Учитель: <a href = comments.php?name=$nh>$key</a> Предмет: $sub <br/> Рейтинг: $value[0] <br/><br/>";
 }
 ?>
 </body>

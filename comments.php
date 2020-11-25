@@ -18,7 +18,7 @@ echo "<h1 align='center'>Комментарии к $name</h1>";
 $array = get_comments($name);
 for ($i=0; $i < count($array); $i++){
 	$rest = substr($array[$i] , 0, 1);
-	if($rest == "5") echo substr($array[$i], 1) . "<br/><br/>";
+	if($rest == "5" && substr($array[$i], 1) != '') echo substr($array[$i], 1) . "<br/><br/>";
 }
 echo "<p>Отрицательные комментарии:<p/>";
 for ($i=0; $i < count($array); $i++){

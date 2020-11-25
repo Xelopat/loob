@@ -10,7 +10,7 @@
 	<form name=choice action=make_questions.php method=POST>
 	<input type="submit" name"SecondSubmit" value="Опросник для изучения мнения о педагоге" />
 	</form>
-	<form name=choice action=smallAsk.php method=POST>
+	<form name=choice action=top.php method=POST>
 	<input type="submit" name"FirstSubmit" value="Рейтинг учителей" />
 	</form>
 	<form name=choice action=add_teacher.php method=POST>

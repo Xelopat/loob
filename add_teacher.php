@@ -1,7 +1,11 @@
+  
 <html>
 <head>
 </head>
 <body>
+<form name=return action=index.php method=POST>
+	<input type="submit" name"Back" value="Вернуться" />
+</form>
 Введите имя учителяи предмет, который он ведет <br/>
 <form name=addTeacher action=final_teacher.php method=POST>
 

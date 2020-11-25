@@ -12,7 +12,15 @@ require_once "base.php";
 
 <?php
 $name = $_POST['nameTeacher'];
-add_teacher($name);
+$sub = $_POST['subject'];
+$mas = get_teachers();
+if($mas != null){
+	if(!in_array($name, $mas)) add_teacher($name);
+}
+else{
+	add_teacher($name);
+}
+add_subject($sub, $name);
 ?>
 </body>
 </html>
