@@ -13,5 +13,8 @@
 	<form name=choice action=smallAsk.php method=POST>
 	<input type="submit" name"FirstSubmit" value="Рейтинг учителей" />
 	</form>
+	<form name=choice action=add_teacher.php method=POST>
+	<input type="submit" name"FourthSubmit" value="Добавить учителя" />
+	</form>
 </body>
 </html
