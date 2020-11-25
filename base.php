@@ -4,11 +4,17 @@
     <?php
 	$host = 'localhost';
 		$user = 'root';
-		$password = 'cyberbullying';
+		$password = '';
 		$db_name = 'loob';
 		
 		$link = mysqli_connect($host, $user, $password);
-		mysqli_query($link, "CREATE DATABASE IF NOT EXISTS $db_name");
+		
+		if(mysqli_query($link, "CREATE DATABASE IF NOT EXISTS $db_name");){
+			echo("   complete");
+		}
+		else{
+			echo "Error: " . mysqli_error($link);
+		}
 		
 		$link = mysqli_connect($host, $user, $password, $db_name);
 		mysqli_query($link, "CREATE TABLE IF NOT EXISTS teachers (
@@ -18,6 +24,18 @@
 		point_count int(11) DEFAULT 0,
 		all_point int(11) DEFAULT 0
 		)");
+		if(mysqli_query($link, "CREATE TABLE IF NOT EXISTS teachers (
+		teacher text,
+		point float DEFAULT 0,
+		comments longtext DEFAULT '',
+		point_count int(11) DEFAULT 0,
+		all_point int(11) DEFAULT 0
+		)");){
+			echo("   complete");
+		}
+		else{
+			echo "Error: " . mysqli_error($link);
+		}
 		
 	function get_all_point($name){
 		global $link;
