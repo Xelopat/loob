@@ -18,11 +18,17 @@
 		point_count int(11) DEFAULT 0,
 		all_point int(11) DEFAULT 0
 		)");
+		
 	function get_all_point($name){
 		global $link;
 		$sql = "SELECT * FROM teachers WHERE teacher = '$name'";
 		$result = $link->query($sql);
-		
+		if($result){
+			echo("   complete");
+		}
+		else{
+			echo "Error: " . mysqli_error($link);
+		}
 		if ($result->num_rows > 0) {
 		  // output data of each row
 		  while($row = $result->fetch_assoc()) {
@@ -36,6 +42,18 @@
 		global $link;
 		$sql = "SELECT * FROM teachers WHERE teacher = '$name'";
 		$result = $link->query($sql);
+		if($result){
+			echo("   complete");
+		}
+		else{
+			echo "Error: " . mysqli_error($link);
+		}
+		if($result){
+			echo("   complete");
+		}
+		else{
+			echo "Error: " . mysqli_error($link);
+		}
 		
 		if ($result->num_rows > 0) {
 		  // output data of each row
@@ -64,7 +82,12 @@
 		global $link;
 		$sql = "SELECT * FROM teachers WHERE teacher = '$name'";
 		$result = $link->query($sql);
-		
+		if($result){
+			echo("   complete");
+		}
+		else{
+			echo "Error: " . mysqli_error($link);
+		}
 		if ($result->num_rows > 0) {
 		  // output data of each row
 		  while($row = $result->fetch_assoc()) {
@@ -78,7 +101,12 @@
 		
 		$sql = "SELECT * FROM teachers ORDER BY point ASC";
 		$result = $link->query($sql);
-		
+		if($result){
+			echo("   complete");
+		}
+		else{
+			echo "Error: " . mysqli_error($link);
+		}
 		if ($result->num_rows > 0) {
 		  $array = array();
 		  while($row = $result->fetch_assoc()) {
@@ -93,7 +121,12 @@
 		
 		$sql = "SELECT * FROM teachers";
 		$result = $link->query($sql);
-		
+		if($result){
+			echo("   complete");
+		}
+		else{
+			echo "Error: " . mysqli_error($link);
+		}
 		if ($result->num_rows > 0) {
 		  $array = array();
 		  while($row = $result->fetch_assoc()) {
@@ -107,7 +140,12 @@
 		global $link;
 		$sql = "SELECT * FROM teachers WHERE teacher = '$name'";
 		$result = $link->query($sql);
-		
+		if($result){
+			echo("   complete");
+		}
+		else{
+			echo "Error: " . mysqli_error($link);
+		}
 		if ($result->num_rows > 0) {
 		  while($row = $result->fetch_assoc()) {
 			return $row["point"];
