@@ -2,17 +2,15 @@
   <head></head>
   <body>
     <?php
-	$host = 'localhost';
+		$host = 'localhost';
 		$user = 'root';
 		$password = '';
 		$db_name = 'loob';
 		
-		$link = mysqli_connect($host, $user, $password);
+		$link = mysqli_connect($host, $user, $password, $db_name);
 		
 		mysqli_query($link, "CREATE DATABASE IF NOT EXISTS $db_name");
-	 	echo "БД создана";
-		$link = mysqli_connect($host, $user, $password, $db_name) or die("Ошибка №2 " . mysqli_error());
-
+		
 		if(mysqli_query($link, "CREATE TABLE IF NOT EXISTS teachers (
 		teacher text,
 		point float DEFAULT 0,
