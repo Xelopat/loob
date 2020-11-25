@@ -4,19 +4,14 @@
     <?php
 	$host = 'localhost';
 		$user = 'root';
-		$password = 'cyberbullying';
+		$password = '';
 		$db_name = 'loob';
 		
-		$link = mysqli_connect($host, $user, $password) or die("Ошибка " . mysqli_error($link));
+		$link = mysqli_connect($host, $user, $password) or die("Ошибка №1" . mysqli_error());
 		
-		if(mysqli_query($link, "CREATE DATABASE IF NOT EXISTS $db_name")){
-			echo("   complete");
-		}
-		else{
-			echo "Error: " . mysqli_error($link);
-		}
+		mysqli_query($link, "CREATE DATABASE IF NOT EXISTS $db_name");
 	 	
-		$link = mysqli_connect($host, $user, $password, $db_name) or die("Ошибка " . mysqli_error($link));;
+		$link = mysqli_connect($host, $user, $password, $db_name) or die("Ошибка №2 " . mysqli_error());;
 
 		if(mysqli_query($link, "CREATE TABLE IF NOT EXISTS teachers (
 		teacher text,
