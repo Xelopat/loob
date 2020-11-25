@@ -7,11 +7,11 @@
 		$password = '';
 		$db_name = 'loob';
 		
-		$link = mysqli_connect($host, $user, $password) or die("Ошибка №1" . mysqli_error());
+		$link = mysqli_connect($host, $user, $password);
 		
 		mysqli_query($link, "CREATE DATABASE IF NOT EXISTS $db_name");
-	 	
-		$link = mysqli_connect($host, $user, $password, $db_name) or die("Ошибка №2 " . mysqli_error());;
+	 	echo "БД создана";
+		$link = mysqli_connect($host, $user, $password, $db_name) or die("Ошибка №2 " . mysqli_error());
 
 		if(mysqli_query($link, "CREATE TABLE IF NOT EXISTS teachers (
 		teacher text,
@@ -20,7 +20,7 @@
 		point_count int(11) DEFAULT 0,
 		all_point int(11) DEFAULT 0
 		)")){
-			echo("   complete");
+			echo("Таблица создана");
 		}
 		else{
 			echo "Error: " . mysqli_error($link);
