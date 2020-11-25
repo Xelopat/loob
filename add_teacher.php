@@ -18,6 +18,7 @@
 <option name=literature>Литература</option>
 <option name=physics>Физика</option>
 <option name=chemistry>Химия</option>
+<option name=chemistry>Другое</option>
 </select><br/>
 <input type="submit" name=addTeacher value="Добавить учителя" />
 </form>
