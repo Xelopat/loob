@@ -157,7 +157,12 @@
 		global $link;
 		
 		$result = "INSERT INTO teachers (teacher, point, comments) VALUES ('$name', '0', '')";
-		mysqli_query($link, $result);
+		if(mysqli_query($link, $result)){
+			echo("   complete");
+		}
+		else{
+			echo "Error: " . mysqli_error($link);
+		}
 		
 	}
 	function set_all_point($point, $name){
