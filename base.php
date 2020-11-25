@@ -7,9 +7,11 @@
 		$password = '';
 		$db_name = 'loob';
 		
-		$link = mysqli_connect($host, $user, $password, $db_name);
+		$link = mysqli_connect($host, $user, $password);
 		
-		mysqli_query($link, "CREATE DATABASE IF NOT EXISTS $db_name");
+		mysqli_query($link, "CREATE DATABASE $db_name");
+		
+		$link = mysqli_connect($host, $user, $password, $db_name) or die("Ошибка №2 " . mysqli_error());
 		
 		if(mysqli_query($link, "CREATE TABLE IF NOT EXISTS teachers (
 		teacher text,
@@ -28,12 +30,6 @@
 		global $link;
 		$sql = "SELECT * FROM teachers WHERE teacher = '$name'";
 		$result = $link->query($sql);
-		if($result){
-			echo("   complete");
-		}
-		else{
-			echo "Error: " . mysqli_error($link);
-		}
 		if ($result->num_rows > 0) {
 		  // output data of each row
 		  while($row = $result->fetch_assoc()) {
@@ -47,18 +43,7 @@
 		global $link;
 		$sql = "SELECT * FROM teachers WHERE teacher = '$name'";
 		$result = $link->query($sql);
-		if($result){
-			echo("   complete");
-		}
-		else{
-			echo "Error: " . mysqli_error($link);
-		}
-		if($result){
-			echo("   complete");
-		}
-		else{
-			echo "Error: " . mysqli_error($link);
-		}
+
 		
 		if ($result->num_rows > 0) {
 		  // output data of each row
@@ -87,12 +72,6 @@
 		global $link;
 		$sql = "SELECT * FROM teachers WHERE teacher = '$name'";
 		$result = $link->query($sql);
-		if($result){
-			echo("   complete");
-		}
-		else{
-			echo "Error: " . mysqli_error($link);
-		}
 		if ($result->num_rows > 0) {
 		  // output data of each row
 		  while($row = $result->fetch_assoc()) {
@@ -106,12 +85,6 @@
 		
 		$sql = "SELECT * FROM teachers ORDER BY point ASC";
 		$result = $link->query($sql);
-		if($result){
-			echo("   complete");
-		}
-		else{
-			echo "Error: " . mysqli_error($link);
-		}
 		if ($result->num_rows > 0) {
 		  $array = array();
 		  while($row = $result->fetch_assoc()) {
@@ -162,12 +135,7 @@
 		global $link;
 		
 		$result = "INSERT INTO teachers (teacher, point, comments) VALUES ('$name', '0', '')";
-		if(mysqli_query($link, $result)){
-			echo("   complete");
-		}
-		else{
-			echo "Error: " . mysqli_error($link);
-		}
+		mysqli_query($link, $result);
 		
 	}
 	function set_all_point($point, $name){
