@@ -1,5 +1,6 @@
 <html>
 <head>
+
 <style>
 .cool{
 	text-decoration: none;
@@ -43,6 +44,9 @@
 </style>
 </head>
 <body class="bg">
+<?php
+require_once "base.php";
+?>
 <table syle="padding-top:80px">
 <tr>
 <td width=15%>
@@ -62,6 +66,7 @@
 $name = $_POST['nameTeacher'];
 $sub = $_POST['subject'];
 $mas = get_teachers();
+echo $name . $sub;
 if($mas != null){
 	if(!in_array($name, $mas)) add_teacher($name);
 }

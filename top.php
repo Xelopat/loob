@@ -43,12 +43,12 @@
 }
 </style>
 </head>
-<body class="bg">
+<body class="bg" link="black" vlink="#2F4F4F">
 <?php
 require_once "base.php";
 ?>
 
-<form name=return action=make_question.php method=POST >
+<form name=return action=index.php method=POST >
 	<input type="submit" name"Back" value="На главную" class="cool"/>
 </form>
 
@@ -59,20 +59,27 @@ require_once "base.php";
 <td width=15%>
 </td>
 <td style="border-radius: 5px;  background:#FAEBD7;padding-bottom:80px; padding-left:25px; padding-right:25px;padding-top:25px" width=900px height=100%>
+
+
 <?php
 $subjects = array_unique(get_all_subjects());
 $all_info = get_all();
 foreach($subjects as $sub_now){
-	echo "Предмет: $sub_now";
+	echo "<font face=sans-serif>Предмет: $sub_now</font>";
 	foreach ($all_info as $key => $value){
 		$nh = str_replace(' ', '_', $key);
 		$sub = get_subject($key);
+		$color = "darkgreen";
+		if($value[0] < 2) $color = "maroon";
+		else if($value[0] >= 2 and $value[0] < 3.5) $color = "darkgoldenrod";
 		if($sub == $sub_now){
-			echo "<div style=margin-left:20px;>Учитель: <a href = comments.php?name=$nh>$key</a><br/> Рейтинг: $value[0]</div><br/>";
+			echo "<div style=margin-left:20px><font face=sans-serif>Учитель: <a href = comments.php?name=$nh>$key</a><br/> Рейтинг: <font color=$color>$value[0]</font></font></div><br/>";
 		}
 	}
 }
 ?>
+
+
 </td>
 <td width=15%>
 </td>

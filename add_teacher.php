@@ -41,23 +41,23 @@
 	display: block;
 }
 </style>
+
 </head>
 <body class="bg
-
 <form name=return action=index.php method=POST>
 	<input type="submit" name"Back" value="На главную" class="cool"/>
+<form name=return action=index.php method=POST >
+	<input type="submit" name"Back" value="На главную" class="cool"/>
 </form>
-
+</form>
 <table style="padding:40px" >
 <tr>
 <td width=15%>
 </td>
 <td style="border-radius: 5px;  background:#FAEBD7;padding-bottom:80px; padding-left:25px; padding-right:25px;padding-top:25px" width=900px height=100%>
 <font  align="center" class="question" size=6>Введите имя учителя и предмет, который он ведет</font><br/><br/>
-
 <form name=addTeacher action=final_teacher.php method=POST >
 <input type=text name=nameTeacher class="answer"> <br/>
-
 <select name=subject class="answer">
 <option name=math>Математика</option>
 <option name=history>История</option>
@@ -75,6 +75,5 @@
 </td>
 </tr>
 </table>
-
 </body>
 </html>

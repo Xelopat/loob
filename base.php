@@ -11,20 +11,16 @@
 		
 		mysqli_query($link, "CREATE DATABASE $db_name");
 		
-		$link = mysqli_connect($host, $user, $password, $db_name) or die("Ошибка №2 " . mysqli_error());
+		$link = mysqli_connect($host, $user, $password, $db_name);
 		
-		if(mysqli_query($link, "CREATE TABLE IF NOT EXISTS teachers (
+		mysqli_query($link, "CREATE TABLE IF NOT EXISTS teachers (
 		teacher text,
+		subject text,
 		point float DEFAULT 0,
 		comments longtext DEFAULT '',
 		point_count int(11) DEFAULT 0,
 		all_point int(11) DEFAULT 0
-		)")){
-			echo("Таблица создана");
-		}
-		else{
-			echo "Error: " . mysqli_error($link);
-		}
+		)");
 		
 	function get_all_point($name){
 		global $link;
@@ -53,11 +49,40 @@
 		}
 	}
 	
+	function get_subject($name){
+		global $link;
+		$sql = "SELECT * FROM teachers WHERE teacher = '$name'";
+		$result = $link->query($sql);
+
+		
+		if ($result->num_rows > 0) {
+		  // output data of each row
+		  while($row = $result->fetch_assoc()) {
+			return $row["subject"];
+		  }
+		}
+	}
+	
+	function get_all_subjects(){
+		global $link;
+		$sql = "SELECT * FROM teachers";
+		$result = $link->query($sql);
+
+		$array = array();
+		if ($result->num_rows > 0) {
+		  // output data of each row
+		  while($row = $result->fetch_assoc()) {
+			array_push($array, $row["subject"]);
+		  }
+		}
+		return $array;
+	}
+	
 	function get_comments($name){
 		global $link;
 		$sql = "SELECT * FROM teachers WHERE teacher = '$name'";
 		$result = $link->query($sql);
-		
+		$array = array();
 		if ($result->num_rows > 0) {
 		  // output data of each row
 		  while($row = $result->fetch_assoc()) {
@@ -83,7 +108,7 @@
 	function get_all(){
 		global $link;
 		
-		$sql = "SELECT * FROM teachers ORDER BY point ASC";
+		$sql = "SELECT * FROM teachers ORDER BY point DESC";
 		$result = $link->query($sql);
 		if ($result->num_rows > 0) {
 		  $array = array();
@@ -99,12 +124,6 @@
 		
 		$sql = "SELECT * FROM teachers";
 		$result = $link->query($sql);
-		if($result){
-			echo("   complete");
-		}
-		else{
-			echo "Error: " . mysqli_error($link);
-		}
 		if ($result->num_rows > 0) {
 		  $array = array();
 		  while($row = $result->fetch_assoc()) {
@@ -118,12 +137,7 @@
 		global $link;
 		$sql = "SELECT * FROM teachers WHERE teacher = '$name'";
 		$result = $link->query($sql);
-		if($result){
-			echo("   complete");
-		}
-		else{
-			echo "Error: " . mysqli_error($link);
-		}
+
 		if ($result->num_rows > 0) {
 		  while($row = $result->fetch_assoc()) {
 			return $row["point"];
@@ -136,8 +150,15 @@
 		
 		$result = "INSERT INTO teachers (teacher, point, comments) VALUES ('$name', '0', '')";
 		mysqli_query($link, $result);
-		
 	}
+	
+	function add_subject($subject, $name){
+		global $link;
+		
+		$result = "UPDATE teachers SET subject='$subject' WHERE teacher='$name'";
+		mysqli_query($link, $result);
+	}
+	
 	function set_all_point($point, $name){
 		global $link;
 		
@@ -204,7 +225,6 @@
 		mysqli_query($link, $result);
 		$result = "UPDATE teachers SET all_point=0";
 		mysqli_query($link, $result);
-		
 	}
 	?>
   </body>

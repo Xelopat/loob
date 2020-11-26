@@ -48,7 +48,7 @@
 require_once "base.php";
 ?>
 
-<form name=return action=make_question.php method=POST>
+<form name=return action=make_questions.php method=POST>
 	<input type="submit" name"Back" value="Назад" class="cool"/>
 </form>
 
@@ -57,7 +57,7 @@ require_once "base.php";
 <td width=15%>
 </td>
 <td style="border-radius: 5px;  background:#FAEBD7;padding-bottom:80px; padding-left:25px; padding-right:25px;padding-top:25px" width=900px height=100%>
-<form name=askStud action=fina_question.php method=POST>
+<form name=askStud action=final_questions.php method=POST>
 
 <font  align="center" size=6 class="question" style="font-weight:bold">Введите имя учителя <br/>
 <?php

@@ -30,6 +30,24 @@
 	font-size:18px;
 	
 }
+.question_1{
+	color: #000000;
+    font-family: 'Montserrat', sans-serif;
+	letter-spacing: 3px;
+	transition: .7s;
+	font-weight: 50;
+	font-size:25px;
+	
+}
+.question_2{
+	color: #000000;
+    font-family: 'Montserrat', sans-serif;
+	letter-spacing: 3px;
+	transition: .7s;
+	font-weight: 50;
+	font-size:13px;
+	
+}
 .answer{
 	color:#2F4F4F;
     font-size: 23px;
@@ -57,21 +75,21 @@
 
 require_once "base.php";
 $name = str_replace("_", " ", $_GET["name"]);
-echo "<h1 align='center'>Комментарии к $name</h1>";
+echo "<h1 align=center class=question_1>Комментарии к $name</h1>";
 ?>
 
-<font  align="center" class="question" size=6>Положительные комментарии:</font>
+<font  align="center" class="question">Положительные комментарии:<br/></font>
 
 <?php
 $array = get_comments($name);
 for ($i=0; $i < count($array); $i++){
 	$rest = substr($array[$i] , 0, 1);
-	if($rest == "5" && substr($array[$i], 1) != '') echo substr($array[$i], 1) . "<br/><br/>";
+	if($rest == "5" && substr($array[$i], 1) != '') echo "<font  align=center class=question_2>" . substr($array[$i], 1) . "</font><br/><br/>";
 }
-echo "Отрицательные комментарии:";
+echo "<font  align=center class=question size=6>Отрицательные комментарии:</font><br/>";
 for ($i=0; $i < count($array); $i++){
 	$rest = substr($array[$i] , 0, 1);
-	if($rest == "1") echo substr($array[$i], 1) . "<br/><br/>";
+	if($rest == "1") echo "<font  align=center class=question_2>" . substr($array[$i], 1) . "</font><br/><br/>";
 }
 ?>
 </td>

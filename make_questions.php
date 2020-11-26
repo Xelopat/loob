@@ -1,132 +1,69 @@
 <html >
 <head>
-</head>
-<body>
-<?php
-require_once "base.php";
-?>
-<form name=return action=index.php method=POST>
-	<input type="submit" name"Back" value="Вернуться" />
-</form>
-
-<form name=askStud action=final_questions.php method=POST>
-
-Введите имя учителя <br/>
-<?php
-$names = get_teachers();
-echo "<select name=teacher>";
-for($i = 0; $i < count($names); $i++){ 
-echo "<option name=$names[$i]>$names[$i]</option>"; 
+<style>
+.cool{
+	text-decoration: none;
+  outline: none;
+  display: inline-block;
+  color: #E6E6FA;
+  padding: 20px 30px;
+  margin: 10px 20px;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  background:#000000;
+  background-size: 200% auto;
+  transition: .5s;
 }
-echo "</select><br/>";
-?>
+.bg{
+	background: #000000;
+}
+.bg2{
+    background: url(orn.png) repeat-y 0 100% fixed;
+}
+.question{
+	color: #000000;
+    font-family: 'Montserrat', sans-serif;
+	letter-spacing: 3px;
+	transition: .7s;
+	font-weight: 50;
+	font-size:18px;
+	
+}
+.answer{
+	color:#2F4F4F;
+    font-size: 23px;
+    background-image:#FFA07A;
+    display: block;
+    text-align: center;
+}
+.smth{
+	background: #000000;
+	display: block;
+}
+</style>
+</head>
+<body class="bg">
 
-Считаете ли Вы, что педагог обеспечивает подготовку, достаточную для успешной работы, учебы? <br/>
-<input type="radio" name="1" value="5" /> 5) считаю, что педагог обеспечивает достаточную подготовку моему ребенку; <br /> 
-<input type="radio" name="1" value="4" /> 4) в целом работа педагога меня устраивает; <br /> 
-<input type="radio" name="1" value="3" /> 3) затрудняюсь ответить; <br /> 
-<input type="radio" name="1" value="2" /> 2) скорее всего подготовка моего ребенка недостаточна для дальнейшей работы (учебы); <br /> 
-<input type="radio" name="1" value="1" /> 1) подготовкой, которую обеспечивает педагог моему ребенку, не удовлетворен.<br /> 
-
-Чувствуете ли Вы на себе влияние педагога?<br/>
-<input type="radio" name="2" value="5" />5) да, влияние положительное и систематическое;<br/>
-<input type="radio" name="2" value="4" />4) да, влияние скорее положительное;<br/>
-<input type="radio" name="2" value="3" />3) не ощущаю влияния;<br/>
-<input type="radio" name="2" value="2" />2) если есть влияние, то оно скорее негативное;<br/>
-<input type="radio" name="2" value="1" />1) ощущаю негативное влияние.<br/>
-
-Стремится ли педагог к установлению доброжелательных отношений с Вами?<br/>
-<input type="radio" name="3" value="5" />5) постоянно стремится к установлению доброжелательных отношений с моим ребенком;<br/>
-<input type="radio" name="3" value="4" />4) в основном отношения педагога и моего ребенка доброжелательны;<br/>
-<input type="radio" name="3" value="3" />3) трудно сказать;<br/>
-<input type="radio" name="3" value="2" />2) боюсь, что эти отношения назвать доброжелательными нельзя;<br/>
-<input type="radio" name="3" value="1" />1) отношение педагога к ребенку меня не устраивает.<br/>
-
-Пользуется ли педагог авторитетом у Вас?<br/>
-<input type="radio" name="4" value="5" />5) считаю, что моему ребенку повезло с педагогом;<br/>
-<input type="radio" name="4" value="4" />4) в основном пользуется;<br/>
-<input type="radio" name="4" value="3" />3) трудно ответить;<br/>
-<input type="radio" name="4" value="2" />2) скорее не пользуется;<br/>
-<input type="radio" name="4" value="1" />1) не пользуется.<br/>
-
-Считаете ли Вы, что педагог видит и учитывает Ваши индивидуальные особенности? <br/>
-<input type="radio" name="5" value="5" />5) всегда учитывает индивидуальные особенности моего ребенка;<br/>
-<input type="radio" name="5" value="4" />4) в основном учитывает склонности и предпочтения моего ребенка;<br/>
-<input type="radio" name="5" value="3" />3) по возможности стремится учитывать индивидуальные особенности моего ребенка;<br/>
-<input type="radio" name="5" value="2" />2) скорее всего, ко всем детям относится одинаково;<br/>
-<input type="radio" name="5" value="1" />1) не замечал такого.<br/>
-
-Всегда ли педагог тактичен, корректен по отношению к Вам?<br/>
-<input type="radio" name="6" value="5" />5) всегда тактичен и корректен;<br/>
-<input type="radio" name="6" value="4" />4) в большинстве случаев тактичен и корректен;<br/>
-<input type="radio" name="6" value="3" />3) иногда тактичен и корректен;<br/>
-<input type="radio" name="6" value="2" />2) редко, когда бывает тактичен и корректен;<br/>
-<input type="radio" name="6" value="1" />1) к сожалению, никогда.<br/>
-
-Удовлетворяет ли Вас то, что Вы занимаетесь у данного педагога?<br/>
-<input type="radio" name="7" value="5" />5) удовлетворен тем, что мой ребенок занимается у данного педагога;<br/>
-<input type="radio" name="7" value="4" />4) в целом удовлетворен;<br/>
-<input type="radio" name="7" value="3" />3) скорее всего удовлетворен тем, что мой ребенок занимается у данного педагога;<br/>
-<input type="radio" name="7" value="2" />2) считаю, что влияние педагога на моего ребенка незначительно, так что мне это безразлично;<br/>
-<input type="radio" name="7" value="1" />1) меня не устраивает педагог.<br/>
-
-Какое влияние, по Вашему мнению, оказывает посещение уроков у данного педагога на Вас?<br/>
-<input type="radio" name="8" value="5" />5) вызывает интерес, развивает любознательность;<br/>
-<input type="radio" name="8" value="4" />4) переносит знания, приобретенные в школе в самостоятельную деятельность;<br/>
-<input type="radio" name="8" value="3" />3) затрудняюсь ответить;<br/>
-<input type="radio" name="8" value="2" />2) в самостоятельной деятельности не использует знания, приобретенные в школе;<br/>
-<input type="radio" name="8" value="1" />1) усиливается отрицательное отношение к урокам.<br/>
-
-Стремится ли педагог к достижению взаимопонимания, взаимодействия с Вами?<br/>
-<input type="radio" name="9" value="5" />5) да, всегда;<br/>
-<input type="radio" name="9" value="4" />4) в основном да;<br/>
-<input type="radio" name="9" value="3" />3) скорее да, чем нет;<br/>
-<input type="radio" name="9" value="2" />2) скорее нет, чем да;<br/>
-<input type="radio" name="9" value="1" />1) нет.<br/>
-
-Как Вы считаете, заслуживает ли данный педагог общественного признания?<br/>
-<input type="radio" name="10" value="5" />5) да, вполне;<br/>
-<input type="radio" name="10" value="4" />4) скорее всего, да;<br/>
-<input type="radio" name="10" value="3" />3) затрудняюсь ответить;<br/>
-<input type="radio" name="10" value="2" />2) скорее не заслуживает;<br/>
-<input type="radio" name="10" value="1" />1) не заслуживает.<br/>
-
-Какова, по вашему мнению, роль педагога в преодолении трудностей, возникающих у Вас в процессе его обучения?<br/>
-<input type="radio" name="11" value="5" />5) педагог постоянно следит за динамикой обучения ребенка и оказывает своевременную коррекцию;<br/>
-<input type="radio" name="11" value="4" />4) если ребенок обращается к педагогу, он всегда помогает;<br/>
-<input type="radio" name="11" value="3" />3) затрудняюсь ответить;<br/>
-<input type="radio" name="11" value="2" />2) помогает в преодолении трудностей, но нерегулярно.<br/>
-<input type="radio" name="11" value="1" />1) не помогает, ссылается на занятость.<br/>
-
-Привлекает ли педагог Вас к различным видам внеурочной деятельности?<br/>
-<input type="radio" name="12" value="5" />5) достаточно часто привлекает к различным видам внеурочной деятельности;<br/>
-<input type="radio" name="12" value="4" />4) в основном привлекает моего ребенка к учебной деятельности;<br/>
-<input type="radio" name="12" value="3" />3) хотелось бы, чтобы это было почаще;<br/>
-<input type="radio" name="12" value="2" />2) привлекает, но это не вызывает у ребенка интерес;<br/>
-<input type="radio" name="12" value="1" />1) не привлекает вообще.<br/>
-
-Устраивает ли Вас характер взаимоотношений с педагогом, его культура поведения в общении с Вами?<br/>
-<input type="radio" name="13" value="5" />5) характер взаимоотношений с педагогом меня вполне устраивает;<br/>
-<input type="radio" name="13" value="4" />4) характер взаимоотношения с педагогом скорее всего меня устраивает;<br/>
-<input type="radio" name="13" value="3" />3) не совсем устраивает;<br/>
-<input type="radio" name="13" value="2" />2) скорее не устраивает;<br/>
-<input type="radio" name="13" value="1" />1) характер взаимоотношений с педагогом меня совсем не устраивает.<br/>
-
-Проявляет ли педагог инициативу в отстаивании интересов учащихся?<br/>
-<input type="radio" name="14" value="5" />5) да, всегда проявляет инициативу;<br/>
-<input type="radio" name="14" value="4" />4) в основном проявляет инициативу;<br/>
-<input type="radio" name="14" value="3" />3) затрудняюсь ответить;<br/>
-<input type="radio" name="14" value="2" />2) проявляет инициативу, но очень редко;<br/>
-<input type="radio" name="14" value="1" />1) никогда не проявляет инициативу.<br/>
-
-Помогает ли Вам педагог в решении проблем, возникающих у Вас во внеурочной деятельности?<br/>
-<input type="radio" name="15" value="5" />5) да, всегда помогает;<br/>
-<input type="radio" name="15" value="4" />4) в большинстве случаев помогает;<br/>
-<input type="radio" name="15" value="3" />3) иногда помогает;<br/>
-<input type="radio" name="15" value="2" />2) редко помогает;<br/>
-<input type="radio" name="15" value="1" />1) никогда не помогает.<br/>
-
-<input type="submit" name"Send" value="Отправить" />
+<form name=return action=index.php method=POST>
+	<input type="submit" name"Back" value="На главную" class="cool"/>
 </form>
-</body> 
+<table>
+<tr>
+<td width=15%>
+</td>
+<td align="center" style="padding-top:80px;border-radius: 5px;  background:#FAEBD7;padding-bottom:80px" width=900px height=100%>
+<font  align="center" size=6 class="question">Вы ученик или родитель? </font><br/>
+<form name=studentBig action=make_question_students.php method=POST> 
+<input type="submit" name="studOrPar" value="Ученик" class="cool"/> <br />
+</form>
+<form name=parentsBig action=make_question_parents.php method=POST> 
+<input type="submit" name="studOrPar1" value="Родитель"class="cool"/> <br /> 
+</form>
+</td>
+<td width=15%>
+</td>
+</tr>
+</table>
+</body>
 </html>

@@ -1,4 +1,5 @@
-﻿<html>
+  
+<html>
 <head>
 <style>
 .cool{
@@ -57,7 +58,7 @@
 </tr>
 <tr>
 <td width=50%>
-	<form name=choice align="center" action=make_question.php method=POST></br>
+	<form name=choice align="center" action=make_questions.php method=POST></br>
 	<input type="submit" name"SecondSubmit" value="Опросник для изучения мнения о педагоге" class="cool"/>
 	</form> 
 </td>
@@ -73,4 +74,4 @@
 </tr>
 </table>
 </body>
-</html
+</html>
