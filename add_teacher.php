@@ -6,7 +6,7 @@
 <form name=return action=index.php method=POST>
 	<input type="submit" name"Back" value="Вернуться" />
 </form>
-Введите имя учителяи предмет, который он ведет <br/>
+Введите имя учителяи и предмет, который он ведет <br/>
 <form name=addTeacher action=final_teacher.php method=POST>
 
 <input type=text name=nameTeacher> <br/>
@@ -18,7 +18,9 @@
 <option name=literature>Литература</option>
 <option name=physics>Физика</option>
 <option name=chemistry>Химия</option>
-<option name=chemistry>Другое</option>
+<option name=prog>Программирование</option>
+<option name=fizra>Физ-ра</option>
+<option name=another>Другое</option>
 </select><br/>
 <input type="submit" name=addTeacher value="Добавить учителя" />
 </form>
