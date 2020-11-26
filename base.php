@@ -63,11 +63,26 @@
 		}
 	}
 	
+	function get_all_subjects(){
+		global $link;
+		$sql = "SELECT * FROM teachers";
+		$result = $link->query($sql);
+
+		$array = array();
+		if ($result->num_rows > 0) {
+		  // output data of each row
+		  while($row = $result->fetch_assoc()) {
+			array_push($array, $row["subject"]);
+		  }
+		}
+		return $array;
+	}
+	
 	function get_comments($name){
 		global $link;
 		$sql = "SELECT * FROM teachers WHERE teacher = '$name'";
 		$result = $link->query($sql);
-		
+		$array = array();
 		if ($result->num_rows > 0) {
 		  // output data of each row
 		  while($row = $result->fetch_assoc()) {
@@ -93,7 +108,7 @@
 	function get_all(){
 		global $link;
 		
-		$sql = "SELECT * FROM teachers ORDER BY point ASC";
+		$sql = "SELECT * FROM teachers ORDER BY point DESC";
 		$result = $link->query($sql);
 		if ($result->num_rows > 0) {
 		  $array = array();
@@ -210,7 +225,6 @@
 		mysqli_query($link, $result);
 		$result = "UPDATE teachers SET all_point=0";
 		mysqli_query($link, $result);
-		
 	}
 	?>
   </body>

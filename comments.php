@@ -20,7 +20,7 @@ for ($i=0; $i < count($array); $i++){
 	$rest = substr($array[$i] , 0, 1);
 	if($rest == "5" && substr($array[$i], 1) != '') echo substr($array[$i], 1) . "<br/><br/>";
 }
-echo "<p>Отрицательные комментарии:<p/>";
+echo "Отрицательные комментарии:";
 for ($i=0; $i < count($array); $i++){
 	$rest = substr($array[$i] , 0, 1);
 	if($rest == "1") echo substr($array[$i], 1) . "<br/><br/>";
