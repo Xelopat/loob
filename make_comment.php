@@ -59,10 +59,10 @@ require_once "base.php";
 <td align="center" style="padding-top:80px;border-radius: 5px;  background:#FAEBD7;padding-bottom:80px" width=900px height=100%>
 <form name=comment action=final_comment.php method=POST>
 <font class="question">Вы ученик или родитель? </font><br/>
-<input type="radio" name="voice" value="one" /> <font class="question" >Ученик </font></br>
+<input type="radio" name="voice" value="one" required /> <font class="question" >Ученик </font></br>
 <input type="radio" name="voice" value="two" /> <font class="question" >Родитель</font><br />
 </br>
-<font class="question" >Выберете имя учителя  </font>
+<font class="question" required>Выберете имя учителя  </font>
 <br/>
 <?php
 $names = get_teachers();
@@ -75,12 +75,12 @@ echo "</select><br/>";
 </br>
 <font class="question" >Какой комментарий вы хотите оставить?  </font>
 <br/>
-<input type="radio" name="kind" value="5" /> <font class="question" >Положительный</font> <br /> 
+<input type="radio" name="kind" value="5" required /> <font class="question" >Положительный</font> <br /> 
 <input type="radio" name="kind" value="1" /> <font class="question">Отриательный </font> <br /> 
 </br>
 <font class="question" >Введите ваш комментарий</font>
 <br/>
-<input type=text name=comment class="answer"> <br/>
+<input type=text name=comment class="answer" required> <br/>
 </br>
 <input type="submit" name"Send" value="Отправить" class="cool"/>
 </form>
